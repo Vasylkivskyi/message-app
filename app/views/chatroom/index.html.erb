@@ -1,4 +1,5 @@
 <div class="flex justify-between w-full grow">
+  <%= logged_in? %>
   <div class="relative w-full p-4 mr-4 bg-white border border-gray-200 rounded-lg shadow grow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
     <ol class="absolute top-0 bottom-0 left-0 right-0 p-4 overflow-y-auto">
       <% @messages.each do |message| %>
