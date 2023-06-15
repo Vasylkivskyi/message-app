@@ -1,36 +1,19 @@
 <div class="flex justify-between w-full grow">
   <div class="relative w-full p-4 mr-4 bg-white border border-gray-200 rounded-lg shadow grow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
     <ol class="absolute top-0 bottom-0 left-0 right-0 p-4 overflow-y-auto">
-      <li class="w-2/3 p-2 mb-10 rounded-lg shadow">
-        <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">February 2022</time>
-        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Application UI code in Tailwind CSS</h3>
-        <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">Get access to over 20+ pages including a dashboard layout, charts, kanban board, calendar, and pre-order E-commerce & Marketing pages.</p>
-      </li>
-      <li class="w-2/3 p-2 mb-10 ml-auto rounded-lg shadow bg-slate-100">
-        <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">March 2022</time>
-        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Marketing UI design in Figma</h3>
-        <p class="text-base font-normal text-gray-500 dark:text-gray-400">All of the pages and components are first designed in Figma and we keep a parity between the two versions even as we update the project.</p>
-      </li>
-      <li class="w-2/3 p-2 mb-10 rounded-lg shadow">
-        <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">April 2022</time>
-        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">E-Commerce UI code in Tailwind CSS</h3>
-        <p class="text-base font-normal text-gray-500 dark:text-gray-400">Get started with dozens of web components and interactive elements built on top of Tailwind CSS.</p>
-      </li>
-      <li class="w-2/3 p-2 mb-10 rounded-lg shadow">
-        <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">April 2022</time>
-        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">E-Commerce UI code in Tailwind CSS</h3>
-        <p class="text-base font-normal text-gray-500 dark:text-gray-400">Get started with dozens of web components and interactive elements built on top of Tailwind CSS.</p>
-      </li>
-      <li class="w-2/3 p-2 mb-10 rounded-lg shadow">
-        <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">April 2022</time>
-        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">E-Commerce UI code in Tailwind CSS</h3>
-        <p class="text-base font-normal text-gray-500 dark:text-gray-400">Get started with dozens of web components and interactive elements built on top of Tailwind CSS.</p>
-      </li>
-      <li class="w-2/3 p-2 mb-10 rounded-lg shadow">
-        <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">April 2022</time>
-        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">E-Commerce UI code in Tailwind CSS</h3>
-        <p class="text-base font-normal text-gray-500 dark:text-gray-400">Get started with dozens of web components and interactive elements built on top of Tailwind CSS.</p>
-      </li>
+      <% @messages.each do |message| %>
+        <li class="w-2/3 p-2 mb-10 rounded-lg shadow <%= "ml-auto bg-slate-100" if message.user.id == 1 %>">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+            <%= message.user.username %>
+          </h3>
+          <p class="mb-1 text-base font-normal text-gray-500 dark:text-gray-400">
+            <%= message.body %>
+          </p>
+          <time class="mb-4 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+            <%= time_ago_in_words message.created_at %> ago
+          </time>
+        </li>
+      <% end %>
     </ol>
   </div>
   <%# left %>
