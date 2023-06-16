@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to root_path
     else
-      flash[:error] = "Login is invalid!"
+      flash.now[:error] = "Login is invalid!"
       render :new, status: :unprocessable_entity
     end
   end
