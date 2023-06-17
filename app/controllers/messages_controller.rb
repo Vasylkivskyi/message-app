@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
-  include ActionView::Helpers::DateHelper
+  include ActionView::Helpers::DateHelper # makes time_ago_in_words to work
+
   def create
     @message = current_user.messages.build(message_params)
     # http implementation
