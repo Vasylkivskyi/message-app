@@ -2,4 +2,13 @@
 import "@hotwired/turbo-rails";
 import "./controllers";
 import "flowbite/dist/flowbite.turbo.js";
-import "./channels"
+import "./channels";
+
+const scrollToBottom = () => {
+  const ol = document.getElementById("messages-list");
+  ol.scrollTop = ol.scrollHeight;
+};
+
+window.onload = function () {
+  scrollToBottom();
+};
