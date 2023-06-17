@@ -9,9 +9,7 @@ const scrollToBottom = () => {
   ol.scrollTop = ol.scrollHeight;
 };
 
-const submitMessage = () => {};
-
-window.onload = function () {
+document.addEventListener("turbo:load", () => {
   scrollToBottom();
   const textarea = document.getElementById("textarea");
   const button = document.getElementById("button");
@@ -20,4 +18,4 @@ window.onload = function () {
       button.click();
     }
   });
-};
+});
