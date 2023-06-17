@@ -9,6 +9,15 @@ const scrollToBottom = () => {
   ol.scrollTop = ol.scrollHeight;
 };
 
+const submitMessage = () => {};
+
 window.onload = function () {
   scrollToBottom();
+  const textarea = document.getElementById("textarea");
+  const button = document.getElementById("button");
+  textarea.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" && !!textarea.value.trim().length) {
+      button.click();
+    }
+  });
 };
