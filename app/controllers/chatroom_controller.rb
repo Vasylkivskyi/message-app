@@ -3,5 +3,6 @@ class ChatroomController < ApplicationController
   def index
     @message = Message.new
     @messages = Message.order(created_at: :asc).last(50)
+    @chat_users = User.all
   end
 end
