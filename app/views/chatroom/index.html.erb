@@ -1,19 +1,7 @@
 <div class="flex justify-between w-full grow">
   <div class="relative w-full p-4 mr-4 bg-white border border-gray-200 rounded-lg shadow grow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
-    <ol class="absolute top-0 bottom-0 left-0 right-0 p-4 overflow-y-auto">
-      <% @messages.each do |message| %>
-        <li class="w-2/3 p-2 mb-10 rounded-lg shadow <%= "ml-auto bg-slate-100" if message.user.id == 1 %>">
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-            <%= message.user.username %>
-          </h3>
-          <p class="mb-1 text-base font-normal text-gray-500 dark:text-gray-400">
-            <%= message.body %>
-          </p>
-          <time class="mb-4 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
-            <%= time_ago_in_words message.created_at %> ago
-          </time>
-        </li>
-      <% end %>
+    <ol id="messages-list" class="absolute top-0 bottom-0 left-0 right-0 p-4 overflow-y-auto" data-current_user="<%= current_user.id %>">
+      <%= render @messages%>
     </ol>
   </div>
   <%# left %>
@@ -84,11 +72,11 @@
     </div>
   </div>
 </div>
-<%= form_for(@message, url: message_path) do |form| %>
+<%= form_for(@message, url: message_path, remote: true) do |form| %>
   <div class="w-full mt-4 border border-gray-200 rounded-lg shadow bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
     <div class="px-4 py-2 bg-white rounded-t-lg dark:bg-gray-800">
       <%= form.label "Your message", class: "sr-only" %>
-      <%= form.text_area :body, class: "w-full px-0 text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400", placeholder: "Write your message..."%>
+      <%= form.text_area :body, id: "textarea", class: "w-full px-0 text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400", placeholder: "Write your message..."%>
     </div>
     <div class="flex items-center justify-end px-3 py-2 border-t dark:border-gray-600">
       <%= button_to "Send", class: "inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800", method: :post %>

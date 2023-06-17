@@ -1,0 +1,11 @@
+<li class="w-2/3 p-2 mb-10 rounded-lg shadow <%= "ml-auto bg-slate-100" if message.user.id == current_user.id %>">
+  <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+    <%= message.user.username %>
+  </h3>
+  <p class="mb-1 text-base font-normal text-gray-500 dark:text-gray-400">
+    <%= message.body %>
+  </p>
+  <time class="mb-4 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+    <%= time_ago_in_words message.created_at %> ago
+  </time>
+</li>
