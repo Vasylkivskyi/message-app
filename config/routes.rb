@@ -7,4 +7,8 @@ Rails.application.routes.draw do
 
   get "/register", to: "users#new"
   post "/users", to: "users#create"
+
+  post "/message", to: "messages#create"
+
+  mount ActionCable.server, at: "/cable"
 end
